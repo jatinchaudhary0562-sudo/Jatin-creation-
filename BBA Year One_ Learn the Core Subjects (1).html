@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BBA Year One: Learn the Core Subjects</title>
+<script id="notes-data" type="application/json">[]</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+:root{--bg:#dfe3e8;--bgtop:#dfe3e8;--surface:#f4f6f8;--panel:#fff;--ink:#0b2545;--muted:#4a5a73;--line:#d3dae6;--accent:#1d4f91;--accent-ink:#fff;--gold:#c9a227;--ok:#1b7f4b;--bad:#b3302a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#16181c;--bgtop:#22262c;--surface:#1d2127;--ink:#e8eef8;--muted:#a3adbb;--line:#333a44;--accent:#6ea8ff;--accent-ink:#06142b;--gold:#e3be4f;--ok:#52c48a;--bad:#ff8a80}}
+:root[data-theme="dark"]{--bg:#16181c;--bgtop:#22262c;--surface:#1d2127;--ink:#e8eef8;--muted:#a3adbb;--line:#333a44;--accent:#6ea8ff;--accent-ink:#06142b;--gold:#e3be4f;--ok:#52c48a;--bad:#ff8a80}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Atkinson Hyperlegible",system-ui,sans-serif}
+h1,h2,h3{font-family:Newsreader,Georgia,serif;line-height:1.15;margin:0}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+header.hero{padding:48px 0 32px;background:#0b2545;color:#fff;border-bottom:3px solid var(--gold)}
+h1{font-size:clamp(2rem,6vw,3.4rem);max-width:16ch}
+.lede{color:var(--muted);max-width:56ch;margin:14px 0 28px}
+.eq{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;max-width:640px}
+.eq h2{font-size:1.15rem;margin-bottom:4px}
+.eq p{margin:0 0 14px;color:var(--muted);font-size:.95rem}
+.eqrow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:8px;text-align:center}
+.eqrow .op{font-size:1.4rem;color:var(--muted)}
+.box{border:2px solid var(--line);border-radius:8px;padding:10px 4px}
+.box.total{border-color:var(--gold)}
+.box b{display:block;font-size:1.4rem;font-family:Newsreader,Georgia,serif}
+.box span{font-size:.85rem;color:var(--muted)}
+.sliders{display:grid;gap:10px;margin-top:16px}
+.sliders label{display:grid;grid-template-columns:90px 1fr;align-items:center;gap:10px;font-size:.95rem}
+input[type=range]{width:100%;accent-color:var(--accent)}
+nav.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0 8px}
+nav.tabs button{font:inherit;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px}
+nav.tabs button[aria-selected=true]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:700}
+button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.progress{color:var(--muted);font-size:.95rem;margin:4px 0 20px}
+.progress progress{width:140px;height:8px;vertical-align:middle;accent-color:var(--accent);margin-left:8px}
+section.subject h2{font-size:1.9rem;margin-bottom:6px}
+section.subject>p{color:var(--muted);margin:0 0 18px;max-width:60ch}
+details{background:var(--surface);border:1px solid var(--line);border-radius:8px;margin-bottom:10px}
+summary{cursor:pointer;padding:14px 16px;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px;min-height:44px}
+summary::after{content:"+";color:var(--accent);font-size:1.3rem;line-height:1}
+details[open] summary::after{content:"–"}
+details .body{padding:0 16px 16px;max-width:64ch}
+details .body p{margin:0 0 10px}
+.key{border-left:4px solid var(--gold);padding:4px 12px;color:var(--muted);font-size:.95rem}
+.quiz{margin-top:28px}
+.quiz h3{font-size:1.4rem;margin-bottom:12px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;margin-bottom:12px}
+.q p{margin:0 0 10px;font-weight:700}
+.opt{display:block;width:100%;text-align:left;font:inherit;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:8px;cursor:pointer;min-height:44px}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 16%,transparent)}
+.opt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 16%,transparent)}
+.why{font-size:.95rem;color:var(--muted);margin:4px 0 0;min-height:1.2em}
+.score{font-weight:700;margin-top:10px}
+.reset{font:inherit;background:none;border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:8px 14px;cursor:pointer;margin-left:10px;min-height:44px}
+.eq{color:var(--ink)}header.hero .lede{color:#c9d6ec}
+.srch{display:block;margin:24px 0 0}
+.srch input{width:100%;font:inherit;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);min-height:48px}
+.genform{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end;margin-bottom:18px}
+.genform label{display:grid;gap:4px;font-size:.9rem;color:var(--muted)}
+.genform select{font:inherit;padding:10px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);min-height:44px}
+.go{font:inherit;font-weight:700;background:var(--accent);color:var(--accent-ink);border:0;border-radius:6px;padding:11px 20px;cursor:pointer;min-height:44px}
+#arena{position:relative;overflow:hidden;min-height:60px}
+.bar{height:6px;background:var(--line);border-radius:3px;margin-bottom:14px}
+.bar i{display:block;height:100%;background:var(--gold);border-radius:3px;transition:width .5s}
+.gq{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:18px}
+.gq.slide{animation:slide .4s ease-out}
+@keyframes slide{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+.top{display:flex;justify-content:space-between;align-items:center;color:var(--muted)}
+.qt{font-weight:700;font-size:1.1rem;margin:8px 0 14px}
+.trk{fill:none;stroke:var(--line);stroke-width:6}
+.arc{fill:none;stroke:var(--accent);stroke-width:6;stroke-linecap:round}
+svg text{fill:var(--ink);font:700 14px "Atkinson Hyperlegible",sans-serif}
+.res{text-align:center;padding:20px}.res text{font-size:26px}
+.conf{position:absolute;inset:0;pointer-events:none}
+.conf i{position:absolute;top:-10px;width:8px;height:12px;animation:fall 2.2s ease-in forwards}
+@keyframes fall{to{transform:translateY(420px) rotate(540deg);opacity:0}}
+body{background:linear-gradient(180deg,var(--bgtop),var(--bg) 520px) var(--bg)}
+header.hero{background:linear-gradient(120deg,#0b2545,#15477f,#0b2545);background-size:220% 220%;animation:drift 22s ease-in-out infinite}
+@keyframes drift{50%{background-position:100% 50%}}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+header.hero h1{animation:rise .8s ease-out both}
+header.hero .lede{animation:rise .8s .15s ease-out both}
+.eq{animation:rise .8s .3s ease-out both}
+#subject>*{animation:rise .45s ease-out both}
+#subject>:nth-child(2){animation-delay:.05s}#subject>:nth-child(3){animation-delay:.1s}#subject>:nth-child(4){animation-delay:.15s}#subject>:nth-child(5){animation-delay:.2s}#subject>:nth-child(6){animation-delay:.25s}#subject>:nth-child(7){animation-delay:.3s}#subject>:nth-child(8){animation-delay:.35s}
+details{transition:box-shadow .25s,border-color .25s}
+details:hover{border-color:var(--accent);box-shadow:0 6px 18px rgba(11,37,69,.12)}
+details[open] .body{animation:rise .35s ease-out}
+nav.tabs button{transition:background .2s,transform .2s,border-color .2s}
+nav.tabs button:hover{transform:translateY(-2px);border-color:var(--accent)}
+.go{transition:transform .2s,filter .2s}.go:hover{transform:translateY(-1px);filter:brightness(1.1)}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0 0 20px}
+.chips li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:.92rem;transition:transform .2s,border-color .2s}
+.chips li:hover{transform:translateY(-2px);border-color:var(--accent)}
+.th{font-size:1.15rem;margin:18px 0 10px}
+.founder{margin:0 0 10px;color:var(--gold);font-weight:700;letter-spacing:.02em;animation:rise .6s ease-out both}
+.nform{display:grid;gap:10px;margin-bottom:20px}
+.nform input,.nform textarea{font:inherit;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);width:100%}
+.nrow{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end}
+.upl{display:grid;gap:4px;font-size:.9rem;color:var(--muted)}
+main.wrap{background:var(--panel,var(--surface));margin:28px auto;padding-top:4px;padding-bottom:28px;border-radius:12px;box-shadow:0 8px 30px rgba(20,30,50,.10)}
+.topics{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;align-items:start;margin-bottom:20px}
+.tp{margin:0}.tp summary{font-weight:400;padding:10px 14px;min-height:44px;align-items:center}.tp .body{padding:0 14px 12px}.tp .body p{margin:0}
+footer{padding:36px 0 48px;color:var(--muted);font-size:.9rem}
+@media (max-width:520px){.eqrow{grid-template-columns:1fr;}.eqrow .op{display:none}.sliders label{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <p class="founder">Founder: Jatin Chaudhary</p>
+  <h1>Year one of your BBA, explained clearly</h1>
+  <p class="lede">Short lessons, a searchable library and a timed quiz generator for five first-year subjects. Read a lesson, test yourself, and track what you have finished.</p>
+</div></header>
+
+<main class="wrap">
+  <div class="srch"><input id="search" type="search" placeholder="Search all lessons (try “zero”, “equity” or “PESTLE”)" aria-label="Search lessons" autocomplete="off"></div>
+  <nav class="tabs" role="tablist" aria-label="Subjects" id="tabs"></nav>
+  <div class="progress" id="prog"></div>
+  <section class="subject" id="subject"></section>
+</main>
+<footer><div class="wrap">Founded by Jatin Chaudhary. Study notes for first-year BBA students. Check your syllabus and textbook for exam details.</div></footer>
+
+<script>
+const DATA=[
+{id:"mgmt",name:"Principles of Management",intro:"How managers plan, organise, lead and control work in an organisation.",
+lessons:[
+{t:"The four functions of management",b:"Managers plan (set goals and decide how to reach them), organise (arrange people and resources), lead (motivate and direct) and control (compare results to goals and correct course).",k:"Planning comes first: controlling is impossible without a goal to measure against."},
+{t:"Levels of management",b:"Top managers set strategy, middle managers turn strategy into departmental plans, and first-line managers supervise daily work. Each level needs a different mix of technical, human and conceptual skills.",k:"Top managers lean on conceptual skills; first-line managers lean on technical skills."},
+{t:"Motivation: Maslow and Herzberg",b:"Maslow ranks needs from physiological to self-actualisation. Herzberg splits factors into hygiene factors (pay, conditions), which prevent dissatisfaction, and motivators (achievement, recognition), which create satisfaction.",k:"Good pay removes complaints but does not on its own create motivation."}],
+quiz:[
+{q:"Which function compares actual results with goals?",o:["Planning","Organising","Controlling"],a:2,w:"Controlling measures performance and corrects deviations."},
+{q:"Strategy is mainly set by which level?",o:["First-line managers","Top managers","Operatives"],a:1,w:"Top managers define the organisation’s direction."},
+{q:"In Herzberg’s theory, salary is a…",o:["Motivator","Hygiene factor","Self-actualisation need"],a:1,w:"Pay is a hygiene factor: it prevents dissatisfaction."}]},
+{id:"acc",name:"Financial Accounting",intro:"Recording, summarising and reporting a business’s money transactions.",
+lessons:[
+{t:"The accounting equation",b:"Assets = Liabilities + Owner’s Equity. Every transaction changes the equation but keeps both sides equal. Buying equipment with cash swaps one asset for another; borrowing cash raises assets and liabilities together.",k:"If the equation does not balance, there is an error in the records."},
+{t:"Debits and credits",b:"Double-entry bookkeeping records every transaction in at least two accounts. Debits increase assets and expenses; credits increase liabilities, equity and revenue. Total debits must equal total credits.",k:"Remember: assets and expenses grow with debits."},
+{t:"The three core statements",b:"The income statement shows profit over a period (revenue minus expenses). The balance sheet shows assets, liabilities and equity at one date. The cash flow statement shows where cash came from and went.",k:"Income statement = a period; balance sheet = a moment."}],
+quiz:[
+{q:"A business has assets of 80 and liabilities of 30. What is equity?",o:["110","50","30"],a:1,w:"Equity = Assets − Liabilities = 80 − 30 = 50."},
+{q:"Which normally increases with a credit?",o:["Revenue","Expenses","Cash"],a:0,w:"Credits increase revenue, liabilities and equity."},
+{q:"Which statement is a snapshot at one date?",o:["Income statement","Cash flow statement","Balance sheet"],a:2,w:"The balance sheet shows financial position at a point in time."}]},
+{id:"env",name:"Business Environment",intro:"The internal and external forces that shape how a business operates and competes.",
+lessons:[
+{t:"Micro and macro environment",b:"The micro environment is close to the firm: customers, suppliers, competitors and intermediaries. The macro environment is wider and uncontrollable: economic, political, legal, social, technological and natural forces.",k:"Firms can influence the micro environment but can only adapt to the macro one."},
+{t:"PESTLE analysis",b:"PESTLE scans Political, Economic, Social, Technological, Legal and Environmental factors that affect a business. Managers use it to spot opportunities and threats before making strategic decisions.",k:"PESTLE looks outward; SWOT adds internal strengths and weaknesses."},
+{t:"The 1991 reforms (LPG)",b:"In 1991 India opened its economy through Liberalisation, Privatisation and Globalisation. Licensing was reduced, foreign investment was welcomed and markets became more competitive.",k:"LPG changed the business environment for every Indian firm."}],
+quiz:[
+{q:"Which is part of the micro environment?",o:["Inflation","Suppliers","Government policy"],a:1,w:"Suppliers deal directly with the firm."},
+{q:"In PESTLE, the L stands for…",o:["Logistics","Legal","Leadership"],a:1,w:"L covers laws and regulations."},
+{q:"India’s LPG reforms began in…",o:["1947","1991","2008"],a:1,w:"The economic reforms started in 1991."}]},
+{id:"fa",name:"First Aid and Basic Health",intro:"What to do in the first minutes of an emergency, and the everyday habits that keep you healthy.",
+lessons:[
+{t:"First response: check, call, care",b:"Make sure the scene is safe, check whether the person responds and is breathing, and call emergency services early (112 in India). Then give care within your training while you wait for help.",k:"Never put yourself in danger to help someone else."},
+{t:"Bleeding and burns",b:"For bleeding, press firmly on the wound with a clean cloth and keep pressing. For a minor burn, cool it under cool running water for about 20 minutes, then cover it loosely with a clean non-stick dressing. Do not apply ice, butter or toothpaste.",k:"Cool a burn with running water, never ice."},
+{t:"Healthy habits",b:"Balanced meals, regular activity, enough sleep, clean drinking water, handwashing and managing stress support everyday health. Vaccinations and check-ups prevent illness, and severe or lasting symptoms need a doctor.",k:"Prevention is simpler than treatment."}],
+quiz:[
+{q:"Which number reaches emergency services across India?",o:["100 only","112","1090"],a:1,w:"112 is the national emergency number."},
+{q:"How should you cool a minor burn?",o:["Apply ice","Cool running water","Apply butter"],a:1,w:"Use cool running water for about 20 minutes."},
+{q:"The first step at an emergency scene is to…",o:["Move the person quickly","Check the scene is safe","Give water"],a:1,w:"Your own safety comes first."}]},
+{id:"iks",name:"Indian Knowledge System",intro:"India’s traditional knowledge in mathematics, science, governance and philosophy.",
+lessons:[
+{t:"Vedas and Upanishads",b:"The four Vedas (Rigveda, Samaveda, Yajurveda, Atharvaveda) are the oldest Indian texts. The Upanishads, which close the Vedic tradition, explore ideas of self, knowledge and ethics that shaped later Indian thought.",k:"The Vedas are a body of knowledge, not only ritual texts."},
+{t:"Indian mathematics and astronomy",b:"Indian scholars developed the decimal place-value system and treated zero as a number. Aryabhata (5th century CE) wrote on astronomy and mathematics, and Brahmagupta set out rules for arithmetic with zero.",k:"Today’s numerals spread from India to the world through Arab scholars."},
+{t:"Kautilya’s Arthashastra",b:"Attributed to Kautilya, this treatise covers statecraft, economics, taxation and administration. Managers still study it for its ideas on strategy, planning, governance and ethical leadership.",k:"It connects directly to management and economics."}],
+quiz:[
+{q:"Who set out rules for arithmetic with zero?",o:["Brahmagupta","Kautilya","Patanjali"],a:0,w:"Brahmagupta described zero’s arithmetic rules."},
+{q:"The Arthashastra mainly deals with…",o:["Poetry","Statecraft and economics","Architecture only"],a:1,w:"It covers governance, economics and strategy."},
+{q:"Which is NOT one of the four Vedas?",o:["Rigveda","Samaveda","Arthashastra"],a:2,w:"The Arthashastra is a separate treatise on statecraft."}]}
+];
+const EXTRA={
+mgmt:[{q:"Which skill do first-line managers need most?",o:["Conceptual","Technical","Political"],a:1,w:"They supervise hands-on daily work."},{q:"Maslow’s highest need is…",o:["Safety","Belonging","Self-actualisation"],a:2,w:"Self-actualisation sits at the top of the hierarchy."}],
+acc:[{q:"Which is an asset?",o:["Bank loan","Cash in hand","Owner’s capital"],a:1,w:"Cash is a resource owned by the business."},{q:"Revenue minus expenses equals…",o:["Equity","Profit","Liability"],a:1,w:"The income statement reports profit this way."}],
+env:[{q:"Which factors can a firm control most?",o:["Internal factors","Macro environment","Climate"],a:0,w:"Internal factors such as resources and policies are under its control."},{q:"Environmental scanning means…",o:["Cleaning the factory","Monitoring external factors","Cutting costs"],a:1,w:"It tracks outside changes to spot opportunities and threats."}],
+fa:[{q:"To control bleeding, you should…",o:["Press firmly with a clean cloth","Remove the cloth often","Wash with ice"],a:0,w:"Firm, continuous pressure helps stop bleeding."},{q:"Which habit supports everyday health?",o:["Skipping sleep","Regular handwashing","Avoiding all exercise"],a:1,w:"Handwashing prevents the spread of many infections."}],
+iks:[{q:"Who wrote the Arthashastra?",o:["Kautilya","Kalidasa","Panini"],a:0,w:"Kautilya (Chanakya) is credited with it."},{q:"Aryabhata is best known for…",o:["Astronomy and mathematics","Grammar","Medicine"],a:0,w:"His Aryabhatiya covers astronomy and mathematics."}]};
+const TOPICS={
+mgmt:["Nature and scope of management","Evolution of management thought","Planning and decision making","Organising and departmentation","Staffing","Leading and motivation","Leadership styles","Communication","Coordination","Controlling techniques","Levels of management","Management by objectives"],
+acc:["Accounting concepts and conventions","Accounting equation","Journal and ledger","Trial balance","Cash book and bank reconciliation","Depreciation","Inventory valuation","Bills of exchange","Final accounts","Financial statements","Accounting standards (Ind AS basics)"],
+env:["Meaning and nature of business environment","Micro and macro environment","Economic environment","Political and legal environment","Social and cultural environment","Technological environment","Natural environment","Competitive environment","PESTLE and SWOT scanning","LPG reforms and globalisation","Economic planning in India","Monetary and fiscal policy","Corporate social responsibility"],
+fa:["Aims and principles of first aid","Checking the scene and the casualty","Calling emergency services (112)","Bleeding and wounds","Burns and scalds","Fractures and sprains","Choking","CPR awareness","Fainting and shock","Heat stroke and dehydration","Nutrition and balanced diet","Sleep, exercise and mental wellbeing","Hygiene and prevention"],
+iks:["Vedas and Upanishads","Indian mathematics and astronomy","Arthashastra and governance","Ayurveda and yoga","Indian philosophy (Darshanas)","Panini and Sanskrit grammar","Metallurgy and architecture","Trade, guilds and traditional business","Gurukul education system","Sustainability in traditional practices","Epics and ethics (Bhagavad Gita)"]};
+const TD={
+mgmt:["Management is getting work done through people to reach goals. Its scope covers planning, organising, staffing, leading and controlling in every kind of organisation.","Classical thinkers like Taylor (scientific management) and Fayol (14 principles) stressed efficiency. Later approaches added human relations, systems and the situation.","Planning sets goals and how to reach them. Decision making is choosing the best option after defining the problem and weighing the outcomes.","Organising arranges tasks, authority and resources. Departmentation groups jobs by function, product, geography or customer.","Staffing means recruiting, selecting, training and appraising the right people for the right jobs.","Leading is guiding people towards goals. Theories such as Maslow and Herzberg explain what drives people to perform.","Autocratic leaders decide alone, democratic leaders involve the team, and laissez-faire leaders give freedom. The best style depends on the situation.","Communication is the exchange of information between sender and receiver. Noise, language gaps and poor listening are common barriers.","Coordination links the efforts of people and departments so they work together without conflict or duplication.","Controlling compares actual performance with standards and corrects gaps. Common tools are budgets, audits, MIS and PERT/CPM.","Top management sets strategy, middle management turns it into plans, and first-line managers supervise daily work.","In MBO, managers and employees agree on goals and review results against them, which builds clarity and commitment."],
+acc:["Concepts like business entity, going concern and accrual guide how records are kept. Conventions such as consistency and conservatism keep reports reliable.","Assets equal liabilities plus owner\u2019s equity, and every transaction keeps both sides in balance.","The journal records transactions in date order. The ledger groups them by account so balances can be found.","A trial balance lists all ledger balances to check that total debits equal total credits.","A cash book records cash and bank receipts and payments. A reconciliation explains differences between it and the bank statement.","Depreciation spreads the cost of a fixed asset over its useful life, commonly by the straight-line or reducing-balance method.","Closing stock is valued at cost or net realisable value, whichever is lower, using methods such as FIFO and weighted average.","A bill of exchange is a written order to pay a fixed sum on a set date. It is drawn, accepted, and then honoured or dishonoured.","Final accounts are the trading account, profit and loss account and balance sheet prepared at the end of the year.","Financial statements report performance and position: the income statement, balance sheet and cash flow statement.","Ind AS are India\u2019s accounting standards, aligned with international standards so companies report in a consistent, comparable way."],
+env:["The business environment is all the internal and external forces that affect a firm. It is dynamic and uncertain, so firms must keep monitoring it.","Micro factors such as customers and suppliers act directly on the firm. Macro factors such as the economy and laws affect all firms in the market.","It covers income levels, inflation, interest rates, growth and the economic system, which shape demand and costs.","Government stability, policies, taxes and business laws set the rules a firm must follow.","Values, customs, lifestyles, population and education influence what people buy and how they work.","New technology changes products, processes and competition, so firms must innovate or fall behind.","Resources, climate and pollution affect costs and responsibilities, pushing firms towards sustainable practices.","Competitors, new entrants, substitutes, suppliers and buyers shape an industry. Porter\u2019s five forces is a common tool.","PESTLE reviews outside factors. SWOT lists internal strengths and weaknesses with external opportunities and threats.","India\u2019s 1991 reforms reduced licensing, opened trade and invited foreign investment, which increased competition.","Five Year Plans set national growth goals until NITI Aayog replaced the Planning Commission in 2015.","Monetary policy, run by the RBI, manages money supply and interest rates. Fiscal policy uses government spending and taxes.","CSR means businesses contribute to society beyond profit. In India, qualifying companies must spend 2% of average net profit on CSR."],
+iks:["The four Vedas are among India\u2019s oldest texts, and the Upanishads discuss the self, knowledge and ethics.","India developed the decimal place-value system and zero. Aryabhata and Brahmagupta advanced astronomy and arithmetic.","Kautilya\u2019s treatise covers statecraft, economy, taxation and administration, with lessons in strategy and leadership.","Ayurveda is a traditional system of medicine based on balance. Yoga combines posture, breathing and meditation for wellbeing.","The classical schools, including Nyaya, Samkhya and Vedanta, explore knowledge, reality and liberation.","Panini\u2019s Ashtadhyayi set out Sanskrit grammar in nearly 4,000 concise rules, a landmark of linguistic science.","Ancient India was known for rust-resistant iron such as the Delhi Iron Pillar, wootz steel, and planned temples and cities.","Guilds (shrenis) organised trade and crafts, and Indian merchants traded widely by land and sea.","In gurukuls, students lived with a teacher and learned scripture, skills and values through close mentoring.","Practices like water harvesting, crop rotation and reverence for nature show long-standing sustainable living.","The Mahabharata and Ramayana teach duty and ethics, and the Gita\u2019s ideas on action without attachment are used in leadership studies."],
+fa:["First aid aims to preserve life, stop the condition getting worse and promote recovery until professional help arrives.","Check that the area is safe, then see whether the person responds and breathes normally before giving care.","Call 112 early and give your location, what happened and the person\u2019s condition. Stay on the line if asked.","Press firmly on the wound with a clean cloth and keep pressing. Get medical help for heavy bleeding.","Cool the burn under cool running water for about 20 minutes and cover it loosely. Avoid ice, butter or creams.","Keep the injured part still and supported and get medical help. For sprains, rest, a cold pack wrapped in cloth, compression and raising the limb help.","If a person cannot cough, speak or breathe, call 112 and use the back blows and abdominal thrusts taught in first aid courses.","CPR uses chest compressions, with rescue breaths if trained, when someone is unresponsive and not breathing normally. Call 112 first and learn it in a certified course.","For fainting, lay the person down and raise their legs. For shock, keep them lying down, warm and calm, and call for help.","Move the person to a cool place, give sips of water if alert, cool the body, and call 112 for confusion or collapse.","A balanced diet includes carbohydrates, proteins, fats, vitamins, minerals, fibre and enough water.","Regular sleep and physical activity improve mood and focus, and talking to someone you trust helps with stress.","Handwashing, clean food and water, vaccinations and regular check-ups help prevent infections."]};
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const $=s=>document.querySelector(s);
+let cur=0,store={done:{},best:{}};
+try{const s=localStorage.getItem("bba1");if(s)store=Object.assign(store,JSON.parse(s))}catch(e){}
+function save(){try{localStorage.setItem("bba1",JSON.stringify(store))}catch(e){}}
+function tabs(){
+  $("#tabs").innerHTML=DATA.concat([{name:"Quiz generator"},{name:"Personal notes"},{name:"BBA Year 1 syllabus"}]).map((d,i)=>`<button role="tab" aria-selected="${i===cur}" data-i="${i}">${d.name}</button>`).join("");
+  $("#tabs").querySelectorAll("button").forEach(b=>b.onclick=()=>{cur=+b.dataset.i;render()});
+}
+function prog(){
+  const total=DATA.reduce((n,d)=>n+d.lessons.length,0);
+  const done=Object.values(store.done).filter(Boolean).length;
+  $("#prog").innerHTML=`Lessons finished: ${done} of ${total}<progress max="${total}" value="${done}"></progress>`;
+}
+function render(){
+  $("#search").value="";tabs();prog();
+  if(cur===DATA.length){gen();return}
+  if(cur===DATA.length+1){notes();return}
+  if(cur===DATA.length+2){syl();return}
+  const d=DATA[cur];
+  $("#subject").innerHTML=`<h2>${d.name}</h2><p>${d.intro}</p><h3 class="th">All topics in this subject</h3><div class="topics">${(TOPICS[d.id]||[]).map((t,i)=>`<details class="tp"><summary>${t}</summary><div class="body"><p>${(TD[d.id]||[])[i]||"Notes for this topic are coming soon."}</p></div></details>`).join("")}</div><h3 class="th">Key lessons</h3>`+
+  d.lessons.map((l,i)=>{const key=d.id+i;return `<details><summary>${l.t}</summary><div class="body"><p>${l.b}</p><p class="key">${l.k}</p><button class="reset" style="margin:6px 0 0" data-k="${key}">${store.done[key]?"Marked as finished":"Mark as finished"}</button></div></details>`}).join("")+
+  `<div class="quiz"><h3>Quick quiz</h3><div id="qs"></div><div class="score" id="sc"></div></div>`;
+  $("#subject").querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>{store.done[b.dataset.k]=!store.done[b.dataset.k];save();b.textContent=store.done[b.dataset.k]?"Marked as finished":"Mark as finished";prog()});
+  quiz();
+}
+function quiz(){
+  const d=DATA[cur];let right=0,answered=0;
+  const box=$("#qs");
+  box.innerHTML=d.quiz.map((q,qi)=>`<div class="q" data-qi="${qi}"><p>${qi+1}. ${q.q}</p>${q.o.map((o,oi)=>`<button class="opt" data-oi="${oi}">${o}</button>`).join("")}<div class="why"></div></div>`).join("");
+  const best=store.best[d.id];
+  $("#sc").textContent=best!=null?`Your best score: ${best} of ${d.quiz.length}`:"";
+  box.querySelectorAll(".q").forEach(qe=>{
+    const q=d.quiz[+qe.dataset.qi];
+    qe.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+      const oi=+b.dataset.oi;
+      qe.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+      qe.querySelectorAll(".opt")[q.a].classList.add("right");
+      if(oi===q.a)right++;else b.classList.add("wrong");
+      qe.querySelector(".why").textContent=(oi===q.a?"Correct. ":"Not quite. ")+q.w;
+      answered++;
+      if(answered===d.quiz.length){
+        if(best==null||right>best){store.best[d.id]=right;save()}
+        $("#sc").innerHTML=`You scored ${right} of ${d.quiz.length}. <button class="reset" id="again">Try again</button>`;
+        $("#again").onclick=quiz;
+      }
+    });
+  });
+}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function poolFor(id){let p=[];DATA.forEach(d=>{if(id==="all"||id===d.id)p=p.concat(d.quiz,EXTRA[d.id]||[])});return p}
+function gen(){
+  $("#prog").innerHTML="";
+  $("#subject").innerHTML=`<h2>Quiz generator</h2><p>Build a fresh timed quiz from one subject or all of them. Questions and answers are shuffled each time, and you get 20 seconds per question.</p><div class="genform"><label>Subject<select id="gs"><option value="all">All subjects</option>${DATA.map(d=>`<option value="${d.id}">${d.name}</option>`).join("")}</select></label><label>Questions (up to)<select id="gn"><option>5</option><option>8</option><option>10</option></select></label><button class="go" id="gb">Generate quiz</button></div><div id="arena"></div>`;
+  $("#gb").onclick=start;
+}
+function start(){run(shuffle(poolFor($("#gs").value)).slice(0,+$("#gn").value))}
+function run(qs){
+  const R=2*Math.PI*26,T=20;let i=0,score=0,timer;const A=$("#arena");
+  function show(){
+    clearInterval(timer);
+    if(i>=qs.length)return end();
+    const q=qs[i],order=shuffle(q.o.map((o,k)=>k));
+    A.innerHTML=`<div class="bar"><i style="width:${i/qs.length*100}%"></i></div><div class="gq slide"><div class="top"><span>Question ${i+1} of ${qs.length}</span><svg width="64" height="64" viewBox="0 0 64 64" aria-label="Time left"><circle cx="32" cy="32" r="26" class="trk"/><circle cx="32" cy="32" r="26" class="arc" id="arc" stroke-dasharray="${R}" stroke-dashoffset="0" transform="rotate(-90 32 32)"/><text x="32" y="37" text-anchor="middle" id="tt">${T}</text></svg></div><p class="qt">${q.q}</p>${order.map(k=>`<button class="opt" data-k="${k}">${q.o[k]}</button>`).join("")}<div class="why" id="wy"></div><button class="go" id="nx" hidden>${i+1<qs.length?"Next question":"See result"}</button></div>`;
+    requestAnimationFrame(()=>{const a=$("#arc");a.style.transition=`stroke-dashoffset ${T}s linear`;a.style.strokeDashoffset=R});
+    let t=T;timer=setInterval(()=>{t--;$("#tt").textContent=t;if(t<=0)pick(-1)},1000);
+    A.querySelectorAll(".opt").forEach(b=>b.onclick=()=>pick(+b.dataset.k));
+    function pick(k){
+      clearInterval(timer);
+      const a=$("#arc");a.style.strokeDashoffset=getComputedStyle(a).strokeDashoffset;a.style.transition="none";
+      A.querySelectorAll(".opt").forEach(b=>b.disabled=true);
+      if(k>=0&&k!==q.a)A.querySelector(`[data-k="${k}"]`).classList.add("wrong");
+      A.querySelector(`[data-k="${q.a}"]`).classList.add("right");
+      if(k===q.a)score++;
+      $("#wy").textContent=(k===q.a?"Correct. ":k<0?"Time is up. ":"Not quite. ")+q.w;
+      const nx=$("#nx");nx.hidden=false;nx.onclick=()=>{i++;show()};
+    }
+  }
+  function end(){
+    const pct=Math.round(score/qs.length*100),C=2*Math.PI*54;
+    A.innerHTML=`<div class="res"><svg width="140" height="140" viewBox="0 0 140 140"><circle cx="70" cy="70" r="54" class="trk"/><circle cx="70" cy="70" r="54" class="arc" id="ra" stroke-dasharray="${C}" stroke-dashoffset="${C}" transform="rotate(-90 70 70)"/><text x="70" y="78" text-anchor="middle" id="rn">0%</text></svg><h3>${score} of ${qs.length} correct</h3><p>${pct>=80?"Excellent work.":pct>=50?"Good effort. Review the lessons and try again.":"Revisit the lessons, then generate a new quiz."}</p><button class="go" id="ag">Generate another</button></div>`;
+    requestAnimationFrame(()=>{const r=$("#ra");r.style.transition="stroke-dashoffset 1.2s ease-out";r.style.strokeDashoffset=C*(1-pct/100)});
+    let n=0;const iv=setInterval(()=>{n=Math.min(pct,n+(Math.ceil(pct/30)||1));$("#rn").textContent=n+"%";if(n>=pct)clearInterval(iv)},40);
+    if(pct>=60)confetti();
+    $("#ag").onclick=start;
+  }
+  show();
+}
+let pub=null,assetsNs=null,canPub=false;let notesList=[];try{notesList=JSON.parse(document.getElementById("notes-data").textContent||"[]")}catch(e){}
+const SRC="<!DOCTYPE html>\n"+document.documentElement.outerHTML;
+function saveNotes(){if(!pub)return;const j=JSON.stringify(notesList).replace(/</g,"\\u003c");const html=SRC.replace(/(<script id="notes-data"[^>]*>)[\s\S]*?(<\/script>)/,(m,a,b)=>a+j+b);pub.publish(html).catch(e=>{const m=$("#nm");if(m)m.textContent="Could not publish: "+(e.code||"error")})}
+async function attach(f){const m=$("#nm");if(!assetsNs){m.textContent="File uploads are not available here.";return}m.textContent="Uploading…";try{const r=await assetsNs.upload(f);notesList.unshift({t:f.name,b:"",u:r.url,d:new Date().toLocaleDateString()});saveNotes();drawNotes();m.textContent="File added."}catch(e){m.textContent="Upload failed: "+(e.message||e.code||"error")}}
+function notes(){
+  $("#prog").innerHTML="";
+  $("#subject").innerHTML=`<h2>Personal notes</h2><p>Write a note or upload a file. Students can read every note here; only you can add or delete them.</p><div class="nform"><input id="nt" placeholder="Note title" aria-label="Note title"><textarea id="nb" rows="5" placeholder="Write your note here" aria-label="Note text"></textarea><div class="nrow"><button class="go" id="ns">Save note</button><label class="upl">Upload a file (text, PDF, Word, slides or image)<input id="nf" type="file" accept=".txt,.md,.pdf,.doc,.docx,.ppt,.pptx,.png,.jpg,.jpeg"></label></div><p class="why" id="nm"></p></div><div id="nl"></div>`;
+  drawNotes();
+  if(!canPub){$(".nform").remove();$("#subject p").textContent="Notes and study material shared by your teacher.";return}
+  $("#ns").onclick=()=>{const t=$("#nt").value.trim(),b=$("#nb").value.trim();if(!t&&!b){$("#nm").textContent="Add a title or some text first.";return}notesList.unshift({t:t||"Untitled note",b,d:new Date().toLocaleDateString()});saveNotes();$("#nt").value="";$("#nb").value="";$("#nm").textContent="Note saved.";drawNotes()};
+  $("#nf").onchange=e=>{const f=e.target.files[0];if(!f)return;if(!/\.(txt|md)$/i.test(f.name)){attach(f);e.target.value="";return}if(f.size>200000){$("#nm").textContent="Choose a text file under 200 KB.";return}const r=new FileReader();r.onload=()=>{notesList.unshift({t:f.name,b:String(r.result),d:new Date().toLocaleDateString()});saveNotes();$("#nm").textContent="File added as a note.";drawNotes()};r.readAsText(f);e.target.value=""};
+}
+function drawNotes(){
+  $("#nl").innerHTML=notesList.length?notesList.map((n,i)=>`<details><summary>${esc(n.t)}</summary><div class="body"><p class="key">Added ${esc(n.d)}</p>${n.b?`<p style="white-space:pre-wrap">${esc(n.b)}</p>`:""}${n.u?`<p><a href="${esc(n.u)}" target="_blank" rel="noopener">Open attached file</a></p>`:""}${canPub?`<button class="reset" data-del="${i}" style="margin:6px 0 0">Delete note</button>`:""}</div></details>`).join(""):`<p class="why">No notes have been added yet.</p>`;
+  $("#nl").querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{notesList.splice(+b.dataset.del,1);saveNotes();drawNotes()});
+}
+function confetti(){const h=document.createElement("div");h.className="conf";const c=["#c9a227","#1d4f91","#1b7f4b","#6ea8ff"];for(let k=0;k<28;k++){const s=document.createElement("i");s.style.cssText=`left:${Math.random()*100}%;background:${c[k%4]};animation-delay:${Math.random()*.6}s`;h.appendChild(s)}$("#arena").appendChild(h);setTimeout(()=>h.remove(),3000)}
+$("#search").oninput=e=>{
+  const s=e.target.value.trim().toLowerCase();
+  if(!s){render();return}
+  const th=[];DATA.forEach(d=>(TOPICS[d.id]||[]).forEach((t,i)=>{if(t.toLowerCase().includes(s))th.push([d.name+": "+t,(TD[d.id]||[])[i]||""])}));const hits=[];DATA.forEach((d,di)=>d.lessons.forEach(l=>{if((l.t+" "+l.b+" "+l.k+" "+d.name).toLowerCase().includes(s))hits.push({d,di,l})}));
+  $("#prog").innerHTML="";
+  $("#subject").innerHTML=`<h2>Search results</h2><p>${hits.length?hits.length+" lesson"+(hits.length===1?"":"s")+" found":"No lessons found"} for “${esc(s)}”.${hits.length?"":" Try a different word."}</p>`+hits.map(h=>`<details open><summary>${h.l.t}</summary><div class="body"><p>${h.l.b}</p><p class="key">${h.l.k}</p><button class="reset" data-go="${h.di}" style="margin:6px 0 0">Open ${h.d.name}</button></div></details>`).join("")+(th.length?`<h3 class="th">Matching topics</h3><div class="topics">${th.map(t=>`<details class="tp"><summary>${esc(t[0])}</summary><div class="body"><p>${esc(t[1])}</p></div></details>`).join("")}</div>`:"");
+  $("#subject").querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{cur=+b.dataset.go;render()});
+};
+const SYL=[
+["Principles of Management",["Introduction: nature, scope and evolution of management thought","Planning, decision making and management by objectives","Organising: structure, departmentation and delegation","Staffing, leading, motivation and leadership theories","Communication, coordination and controlling"]],
+["Financial Accounting",["Accounting concepts, conventions and the accounting equation","Journal, ledger and trial balance","Cash book and bank reconciliation","Depreciation and inventory valuation","Final accounts of a sole proprietor and Ind AS basics"]],
+["Business Environment",["Meaning and nature; micro and macro environment","Economic, political and legal environment","Social, cultural, technological and natural environment","LPG reforms, economic planning, monetary and fiscal policy","CSR, ethics and environmental scanning (PESTLE, SWOT)"]],
+["Indian Knowledge System",["Vedas, Upanishads and Indian philosophy","Indian mathematics, astronomy and science","Arthashastra, governance and management ideas","Ayurveda, yoga and wellbeing","Trade, guilds, education systems and sustainability"]],
+["First Aid and Basic Health",["Principles of first aid and emergency response","Bleeding, burns, fractures, choking and CPR awareness","Common illnesses, nutrition and hygiene","Fitness, sleep and mental wellbeing","Health services and emergency numbers"]]];
+const SYL2=[
+["Business Communication",["Communication process and barriers","Business letters, emails and reports","Listening, presentations and group discussion"]],
+["Business Mathematics and Statistics",["Ratio, percentage, interest and equations","Matrices and basic calculus for business","Data presentation, mean, median, mode and dispersion","Correlation, regression and probability basics"]],
+["Marketing Management",["Marketing concepts and the 4Ps","Consumer behaviour and segmentation","Product, pricing, distribution and promotion"]],
+["Business Law",["Indian Contract Act: offer, acceptance and consideration","Performance and discharge of contracts","Sale of Goods Act and consumer protection basics"]],
+["Computer Applications",["Computer fundamentals and office tools","Spreadsheets for business data","Internet, e-commerce and digital security basics"]]];
+function syl(){
+  $("#prog").innerHTML="";
+  const card=p=>`<details><summary>${p[0]}</summary><div class="body"><ol>${p[1].map(u=>`<li>${u}</li>`).join("")}</ol></div></details>`;
+  $("#subject").innerHTML=`<h2>BBA first-year syllabus</h2><p>A typical first-year outline. Universities differ, so check your official syllabus for exact units and marks.</p><h3 class="th">Subjects covered on this site</h3>`+SYL.map(card).join("")+`<h3 class="th">Other papers often taught in year one</h3>`+SYL2.map(card).join("");
+}
+(async()=>{try{const u=await claude.use("user");if(u&&u.canEdit()){pub=await claude.use("artifact");assetsNs=await claude.use("assets");canPub=!!pub;if(cur===DATA.length+1)render()}}catch(e){}})();
+render();
+</script>
+</body>
+</html>
